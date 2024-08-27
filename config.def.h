@@ -107,6 +107,10 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
         { 0, XF86XK_AudioMute,        spawn, {.v = mutevol } },
         { 0, XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	{ MODKEY,                       XK_Right,  viewnext,       {0} },
+        { MODKEY,                       XK_Left,   viewprev,       {0} },
+        { MODKEY|ShiftMask,             XK_Right,  tagtonext,      {0} },
+        { MODKEY|ShiftMask,             XK_Left,   tagtoprev,      {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
