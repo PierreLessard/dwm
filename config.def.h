@@ -2,15 +2,15 @@
 #include <X11/XF86keysym.h> 
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 12;        /* gaps between windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int gappx     = 8;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int usealtbar          = 1;        /* 1 means use non-dwm status bar
 */
 static const char *altbarclass      = "Polybar"; /* Alternate bar class name */
-static const char *altbarcmd        = "$HOME/bar.sh"; /* Alternate bar launch command */
+static const char *altbarcmd        = "$HOME/.config/polybar/launch.sh"; /* Alternate bar launch command */
 static const char *fonts[]          = { "Hack:size=15", "MaterialDesignIconsExtended:size=15" };
 static const char dmenufont[]       = "Hack:size=15";
 static const char col_gray1[]       = "#222222";
@@ -51,8 +51,8 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const int focusonwheel = 0; /* Could break something added last second*/
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "T",      tile },    /* first entry is default */
+	{ "F",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
@@ -72,6 +72,10 @@ static char dmenumon[2] = "0"; /* component of dmenu{dark,light}, manipulated in
 static const char *dmenudark[] =  { "dmenu_run", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenulight[] = { "dmenu_run", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", col_gray3, "-nf", col_gray1, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+
+static const char *upvol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
+static const char *downvol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
+static const char *mutevol[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -98,7 +102,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask, XK_4, spawn, SHCMD("scrot -s - | xclip -selection clipboard -target image/png") },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ 0, XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
+        { 0, XF86XK_AudioMute,        spawn, {.v = mutevol } },
+        { 0, XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
