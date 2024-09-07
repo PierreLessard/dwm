@@ -72,6 +72,8 @@ static char dmenumon[2] = "0"; /* component of dmenu{dark,light}, manipulated in
 static const char *dmenudark[] =  { "dmenu_run", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenulight[] = { "dmenu_run", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", col_gray3, "-nf", col_gray1, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *browsercmd[] = { "brave-browser", NULL };
+static const char *notescmd[] = { "notion", NULL };
 
 static const char *upvol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
 static const char *downvol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
@@ -81,6 +83,8 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawndmenu,     {0} },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,		XK_b,	   spawn,	   {.v = browsercmd } },
+	{ MODKEY|ShiftMask,		XK_n,      spawn,	   {.v = notescmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -107,8 +111,8 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
         { 0, XF86XK_AudioMute,        spawn, {.v = mutevol } },
         { 0, XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
-	{ MODKEY,                       XK_Right,  viewnext,       {0} },
-        { MODKEY,                       XK_Left,   viewprev,       {0} },
+	{ MODKEY|Mod4Mask,                       XK_Right,  viewnext,       {0} },
+        { MODKEY|Mod4Mask,                       XK_Left,   viewprev,       {0} },
         { MODKEY|ShiftMask,             XK_Right,  tagtonext,      {0} },
         { MODKEY|ShiftMask,             XK_Left,   tagtoprev,      {0} },
 	TAGKEYS(                        XK_1,                      0)
@@ -121,8 +125,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-    	{ 0, XF86XK_MonBrightnessUp,   spawn,   SHCMD("brightnessctl s +10%") },
-    	{ 0, XF86XK_MonBrightnessDown, spawn,   SHCMD("brightnessctl s 10%-") },
+    	{ 0, XF86XK_MonBrightnessUp,   spawn,   SHCMD("brightnessctl s +5%") },
+    	{ 0, XF86XK_MonBrightnessDown, spawn,   SHCMD("brightnessctl s 5%-") },
 };
 
 /* button definitions */

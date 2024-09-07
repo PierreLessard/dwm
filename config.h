@@ -125,8 +125,8 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-    	{ 0, XF86XK_MonBrightnessUp,   spawn,   SHCMD("brightnessctl s +10%") },
-    	{ 0, XF86XK_MonBrightnessDown, spawn,   SHCMD("brightnessctl s 10%-") },
+    	{ 0, XF86XK_MonBrightnessUp,   spawn,   SHCMD("brightnessctl s +5%") },
+    	{ 0, XF86XK_MonBrightnessDown, spawn,   SHCMD("brightnessctl s 5%-") },
 };
 
 /* button definitions */
