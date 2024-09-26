@@ -73,7 +73,7 @@ static const char *dmenudark[] =  { "dmenu_run", "-m", dmenumon, "-i", "-fn", dm
 static const char *dmenulight[] = { "dmenu_run", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", col_gray3, "-nf", col_gray1, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *browsercmd[] = { "brave-browser", NULL };
-static const char *notescmd[] = { "notion", NULL };
+static const char *notescmd[] = { "Obsidian-1.6.7.AppImage", NULL };
 
 static const char *upvol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
 static const char *downvol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };
