@@ -71,9 +71,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenu{dark,light}, manipulated in spawndmenu() */
 static const char *dmenudark[] =  { "dmenu_run", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *dmenulight[] = { "dmenu_run", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", col_gray3, "-nf", col_gray1, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
-static const char *browsercmd[] = { "brave-browser", NULL };
-static const char *notescmd[] = { "notion", NULL };
+static const char *termcmd[]  = { "kitty", NULL };
+static const char *browsercmd[] = { "com.brave.Browser", NULL };
+static const char *notescmd[] = { "Obsidian-1.6.7.AppImage", NULL };
 
 static const char *upvol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+5%", NULL };
 static const char *downvol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-5%", NULL };

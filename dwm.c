@@ -2606,6 +2606,8 @@ view(const Arg *arg)
 	focus(NULL);
 	arrange(selmon);
         updatecurrenddesktop();
+  if (selmon->sel)
+		XWarpPointer(dpy, None, selmon->sel->win, 0, 0, 0, 0, selmon->sel->w / 2, selmon->sel->h / 2);
 }
 
 void
